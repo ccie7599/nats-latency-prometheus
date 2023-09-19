@@ -13,8 +13,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  **/
-process.env.CLIENTID = "putclientidhere",
-process.env.JWT = "putjwthere",
+process.env.CLIENTID = "example",
+process.env.JWT = "PNPDZZE7SICG2PGAX2HBI4CPJI",
 
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
