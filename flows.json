@@ -1,40 +1,393 @@
 [
     {
-        "id": "f6f2187d.f17ca8",
+        "id": "6a61f9e65168b7db",
         "type": "tab",
-        "label": "Flow 1",
+        "label": "Set GeoIP ",
         "disabled": false,
-        "info": ""
+        "info": "",
+        "env": []
     },
     {
-        "id": "8f456ebab12234f7",
+        "id": "d53953bb21483b35",
+        "type": "tab",
+        "label": "Pub/Sub Perf Test",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "3c9fafa.7dd6a5",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "demo-na.mqtttest.com",
+        "port": "8883",
+        "tls": "2d748829.2503d8",
+        "clientid": "$(CLIENTID)",
+        "autoConnect": true,
+        "usetls": true,
+        "compatmode": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "demo/docker/clientstate/connect",
+        "birthQos": "0",
+        "birthRetain": "false",
+        "birthPayload": "$(CLIENTID)",
+        "birthMsg": {},
+        "closeTopic": "demo/docker/clientstate/close",
+        "closeQos": "0",
+        "closeRetain": "false",
+        "closePayload": "$(CLIENTID)",
+        "closeMsg": {},
+        "willTopic": "demo/docker/clientstate/lastwill",
+        "willQos": "0",
+        "willRetain": "false",
+        "willPayload": "$(CLIENTID)",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "2d748829.2503d8",
+        "type": "tls-config",
+        "name": "demo-na.mqtttest.com",
+        "cert": "",
+        "key": "",
+        "ca": "",
+        "certname": "",
+        "keyname": "",
+        "caname": "",
+        "servername": "demo-na.mqtttest.com",
+        "verifyservercert": true
+    },
+    {
+        "id": "a0db7af4440d1004",
+        "type": "natsio-server",
+        "name": "",
+        "host": "nats",
+        "port": "4222",
+        "json": true
+    },
+    {
+        "id": "0c2b386ad7972d20",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "nats",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "4caec7f47efdb22f",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": true
+    },
+    {
+        "id": "1856a81f5a215397",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "e6705d33d2a6107f",
+        "type": "ui_group",
+        "name": "Default",
+        "tab": "4caec7f47efdb22f",
+        "order": 1,
+        "disp": false,
+        "width": "16",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d3e8645123b2bada",
+        "type": "prometheus-metric-config",
+        "name": "message_latency",
+        "help": "publish-to-subscribe end to end message latency",
+        "labels": "sourceip,sourceregion,sourceorg,destip,destregion,destorg",
+        "mtype": "gauge"
+    },
+    {
+        "id": "fb506465b3f35d99",
+        "type": "prometheus-metric-config",
+        "name": "icmp_latency",
+        "help": "end-to-end icmp latency",
+        "labels": "sourceip,sourceregion,sourceorg,destip,destregion,destorg",
+        "mtype": "gauge"
+    },
+    {
+        "id": "ecfe03d5fdd1898e",
+        "type": "natsio-server",
+        "name": "",
+        "host": "172.234.31.252",
+        "port": "4222",
+        "json": true
+    },
+    {
+        "id": "acec7975370bbbc1",
         "type": "http request",
-        "z": "f6f2187d.f17ca8",
-        "name": "Query Prometheus for Current CPU Utliization (Load)",
+        "z": "6a61f9e65168b7db",
+        "name": "Lookup public IP address",
         "method": "GET",
-        "ret": "obj",
+        "ret": "txt",
         "paytoqs": "ignore",
-        "url": "http://prometheus-server.default.svc.cluster.local/api/v1/query?query=sum(rate(node_cpu_seconds_total{mode!=%22idle%22}[2m]))*100",
+        "url": "wgetip.com",
         "tls": "",
         "persist": false,
         "proxy": "",
-        "insecureHTTPParser": false,
         "authType": "",
         "senderr": false,
-        "headers": [],
-        "x": 260,
-        "y": 340,
+        "x": 210,
+        "y": 140,
         "wires": [
             [
-                "59a44ca6124e67fc"
+                "a23ad39b489b16ca"
             ]
         ]
     },
     {
-        "id": "68d73c089fecb368",
+        "id": "a23ad39b489b16ca",
+        "type": "template",
+        "z": "6a61f9e65168b7db",
+        "name": "Format GeoIP Lookup",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "http://ip-api.com/json/{{payload}}",
+        "output": "str",
+        "x": 200,
+        "y": 180,
+        "wires": [
+            [
+                "98a0d222fd20f7e1"
+            ]
+        ]
+    },
+    {
+        "id": "98a0d222fd20f7e1",
+        "type": "http request",
+        "z": "6a61f9e65168b7db",
+        "name": "GeoIP Lookup",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 180,
+        "y": 220,
+        "wires": [
+            [
+                "e42d504ccd325c04",
+                "668d277f3ed9c6d2"
+            ]
+        ]
+    },
+    {
+        "id": "e42d504ccd325c04",
+        "type": "change",
+        "z": "6a61f9e65168b7db",
+        "name": "Set Global Variables ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "regionName",
+                "pt": "global",
+                "to": "payload.regionName",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "countryCode",
+                "pt": "global",
+                "to": "payload.countryCode",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "org",
+                "pt": "global",
+                "to": "payload.org",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "ip",
+                "pt": "global",
+                "to": "payload.query",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 200,
+        "y": 260,
+        "wires": [
+            [
+                "a725dd0e52223db1",
+                "a559235edbfcd898"
+            ]
+        ]
+    },
+    {
+        "id": "a725dd0e52223db1",
+        "type": "template",
+        "z": "6a61f9e65168b7db",
+        "name": "Format iplocation file",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "json",
+        "syntax": "mustache",
+        "template": "{\"regionName\":\"{{payload.regionName}}\",\"countryCode\":\"{{payload.countryCode}}\",\"org\":\"{{payload.org}}\"}",
+        "output": "str",
+        "x": 200,
+        "y": 300,
+        "wires": [
+            [
+                "40399ae63f2a6dc5"
+            ]
+        ]
+    },
+    {
+        "id": "40399ae63f2a6dc5",
+        "type": "file",
+        "z": "6a61f9e65168b7db",
+        "name": "write iplocation file to disk ",
+        "filename": "/data/iplocation",
+        "appendNewline": true,
+        "createDir": false,
+        "overwriteFile": "true",
+        "encoding": "none",
+        "x": 210,
+        "y": 340,
+        "wires": [
+            [
+                "fb0c5bf6559c69e1"
+            ]
+        ]
+    },
+    {
+        "id": "03cf8a85d6e46558",
         "type": "inject",
-        "z": "f6f2187d.f17ca8",
-        "name": "Update Load Object every 5 seconds",
+        "z": "6a61f9e65168b7db",
+        "name": "",
         "props": [
             {
                 "p": "payload"
@@ -44,251 +397,25 @@
                 "vt": "str"
             }
         ],
-        "repeat": "5",
+        "repeat": "",
         "crontab": "",
-        "once": false,
+        "once": true,
         "onceDelay": 0.1,
         "topic": "",
-        "payload": "",
         "payloadType": "date",
-        "x": 210,
-        "y": 180,
-        "wires": [
-            [
-                "ac35b5c60ebb482e"
-            ]
-        ]
-    },
-    {
-        "id": "ac35b5c60ebb482e",
-        "type": "http request",
-        "z": "f6f2187d.f17ca8",
-        "name": "Query Prometheus for # of CPUs in cluster (Capacity)",
-        "method": "GET",
-        "ret": "obj",
-        "paytoqs": "ignore",
-        "url": "http://prometheus-server.default.svc.cluster.local/api/v1/query?query=sum(machine_cpu_cores)*100",
-        "tls": "",
-        "persist": false,
-        "proxy": "",
-        "insecureHTTPParser": false,
-        "authType": "",
-        "senderr": false,
-        "headers": [],
-        "x": 260,
-        "y": 220,
-        "wires": [
-            [
-                "3fb1d1b4ac1e2f06"
-            ]
-        ]
-    },
-    {
-        "id": "59a44ca6124e67fc",
-        "type": "change",
-        "z": "f6f2187d.f17ca8",
-        "name": "Set Load and Timestamp Variables",
-        "rules": [
-            {
-                "t": "set",
-                "p": "load",
-                "pt": "msg",
-                "to": "payload.data.result[0].value[1]",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "timestamp",
-                "pt": "msg",
-                "to": "",
-                "tot": "date"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 200,
-        "y": 380,
-        "wires": [
-            [
-                "414224bedb4b72a6"
-            ]
-        ]
-    },
-    {
-        "id": "3fb9773c00b9e504",
-        "type": "change",
-        "z": "f6f2187d.f17ca8",
-        "name": "Set Capacity Variable",
-        "rules": [
-            {
-                "t": "set",
-                "p": "capacity",
-                "pt": "msg",
-                "to": "payload.data.result[0].value[1]",
-                "tot": "msg"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 160,
-        "y": 300,
-        "wires": [
-            [
-                "8f456ebab12234f7"
-            ]
-        ]
-    },
-    {
-        "id": "3fb1d1b4ac1e2f06",
-        "type": "function",
-        "z": "f6f2187d.f17ca8",
-        "name": "Determine Target by Capacity x desired target %",
-        "func": "msg.target = Number(msg.payload.data.result[0].value[1]);  \nmsg.target = msg.target*.75; \nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 250,
-        "y": 260,
-        "wires": [
-            [
-                "3fb9773c00b9e504"
-            ]
-        ]
-    },
-    {
-        "id": "23e7710e960f86b3",
-        "type": "template",
-        "z": "f6f2187d.f17ca8",
-        "name": "Build XML LoadObject ",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "<load-object domain=\"connected-cloud.io.akadns.net\"\n          version=\"1\"\n          xmlns=\"http://www.akamai.com/Traffic Management/load-balancing\"\n          timestamp=\"{{timestamp}}\"\n          tag=\"12345\" >\n      <datacenter datacenterId=\"2\">\n          <resource name=\"http_load\">\n              <current-load>\n                  {{load}}\n              </current-load>\n              <target-load>\n                  {{target}}\n              </target-load>\n              <capacity>\n                  {{capacity}}\n              </capacity>\n          </resource>\n       </datacenter>\n      </load-object>",
-        "output": "str",
-        "x": 160,
-        "y": 460,
-        "wires": [
-            [
-                "65cbf996ccb66aa2",
-                "578fd9544a663a1a"
-            ]
-        ]
-    },
-    {
-        "id": "414224bedb4b72a6",
-        "type": "moment",
-        "z": "f6f2187d.f17ca8",
-        "name": "",
-        "topic": "",
-        "input": "timestamp",
-        "inputType": "msg",
-        "inTz": "Africa/Abidjan",
-        "adjAmount": 0,
-        "adjType": "days",
-        "adjDir": "add",
-        "format": "",
-        "locale": "en-US",
-        "output": "timestamp",
-        "outputType": "msg",
-        "outTz": "Africa/Abidjan",
-        "x": 160,
-        "y": 420,
-        "wires": [
-            [
-                "23e7710e960f86b3"
-            ]
-        ]
-    },
-    {
-        "id": "65cbf996ccb66aa2",
-        "type": "file",
-        "z": "f6f2187d.f17ca8",
-        "name": "Write load object to disk ",
-        "filename": "/data/loadobject",
-        "filenameType": "str",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "true",
-        "encoding": "none",
-        "x": 170,
-        "y": 500,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "ba8b0809285c1e56",
-        "type": "http in",
-        "z": "f6f2187d.f17ca8",
-        "name": "HTTP endpoint /loadobject ",
-        "url": "/loadobject",
-        "method": "get",
-        "upload": false,
-        "swaggerDoc": "",
-        "x": 170,
-        "y": 580,
-        "wires": [
-            [
-                "1b0b901514eab1fd",
-                "0d1c9a82e8b14f92"
-            ]
-        ]
-    },
-    {
-        "id": "1b0b901514eab1fd",
-        "type": "file in",
-        "z": "f6f2187d.f17ca8",
-        "name": "Read from loadobject file ",
-        "filename": "/data/loadobject",
-        "filenameType": "str",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 170,
-        "y": 620,
-        "wires": [
-            [
-                "878335ddf5f5530a"
-            ]
-        ]
-    },
-    {
-        "id": "878335ddf5f5530a",
-        "type": "http response",
-        "z": "f6f2187d.f17ca8",
-        "name": "Serve loadobject ",
-        "statusCode": "",
-        "headers": {},
-        "x": 150,
-        "y": 660,
-        "wires": []
-    },
-    {
-        "id": "5470668fbe08ef7c",
-        "type": "comment",
-        "z": "f6f2187d.f17ca8",
-        "name": "Instructions for per-env configuration-\\n  1. Within \"Determine Target by Capacity x desired target %\" node, enter the target percentage in the function (i.e. 75% target would mean multiplying capacity by 0.75) \\n 2. Within \"Build XML LoadObject\" node, change the domain, data center ID, and resource name values per the specific GTM configuration.",
-        "info": "Instructions for per-env configuration-\n\n1. Within \"Determine Target by Capacity x desired target %\" node, enter the target percentage in the function (i.e. 75% target would mean multiplying capacity by 0.75)\n\n2. Within \"Build XML LoadObject\" node, change the domain, data center ID, and resource name values per the specific GTM configuration.",
-        "x": 610,
+        "x": 180,
         "y": 80,
-        "wires": []
+        "wires": [
+            [
+                "acec7975370bbbc1"
+            ]
+        ]
     },
     {
-        "id": "578fd9544a663a1a",
+        "id": "fb0c5bf6559c69e1",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 1",
+        "z": "6a61f9e65168b7db",
+        "name": "",
         "active": true,
         "tosidebar": true,
         "console": false,
@@ -296,15 +423,203 @@
         "complete": "false",
         "statusVal": "",
         "statusType": "auto",
-        "x": 700,
-        "y": 400,
+        "x": 520,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "0d1c9a82e8b14f92",
+        "id": "668d277f3ed9c6d2",
         "type": "debug",
-        "z": "f6f2187d.f17ca8",
-        "name": "debug 2",
+        "z": "6a61f9e65168b7db",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a559235edbfcd898",
+        "type": "debug",
+        "z": "6a61f9e65168b7db",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "304312255a531ba3",
+        "type": "inject",
+        "z": "d53953bb21483b35",
+        "name": "Inject every second",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 100,
+        "wires": [
+            [
+                "bc925c22a0c61c27"
+            ]
+        ]
+    },
+    {
+        "id": "582bc5e9582b28fd",
+        "type": "function",
+        "z": "d53953bb21483b35",
+        "name": "Add current epoch timestamp ",
+        "func": "msg.payload.time = Date.now() \nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "ab61909e2990b01c",
+                "badf9d925a4f18e7"
+            ]
+        ]
+    },
+    {
+        "id": "fbe6d5e29075a5d5",
+        "type": "function",
+        "z": "d53953bb21483b35",
+        "name": "Calculate Time Difference ",
+        "func": "var now = Date.now();\nvar then = msg.payload.time;\nmsg.payload.latency = now - then;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 230,
+        "y": 480,
+        "wires": [
+            [
+                "cc8e334661ec7a7c"
+            ]
+        ]
+    },
+    {
+        "id": "bc925c22a0c61c27",
+        "type": "template",
+        "z": "d53953bb21483b35",
+        "name": "Extract Geo and Org info from global variables",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"extip\":\"{{global.ip}}\",\"publishregion\":\"{{global.regionName}}\",\"publishcountry\":\"{{global.countryCode}}\",\"publishorg\":\"{{global.org}}\"}",
+        "output": "json",
+        "x": 240,
+        "y": 140,
+        "wires": [
+            [
+                "582bc5e9582b28fd"
+            ]
+        ]
+    },
+    {
+        "id": "cc8e334661ec7a7c",
+        "type": "change",
+        "z": "d53953bb21483b35",
+        "name": "Extract Geo Location from Global Variables",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.regionName",
+                "pt": "msg",
+                "to": "regionName",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.countryCode",
+                "pt": "msg",
+                "to": "countryCode",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.org",
+                "pt": "msg",
+                "to": "org",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "topic",
+                "pt": "msg",
+                "to": "perf.results",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "host",
+                "pt": "msg",
+                "to": "payload.extip",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 520,
+        "wires": [
+            [
+                "e3520d406b372249",
+                "2b887ff3c55045f9"
+            ]
+        ]
+    },
+    {
+        "id": "90f5b0103f5da3f1",
+        "type": "comment",
+        "z": "d53953bb21483b35",
+        "name": "Publisher",
+        "info": "",
+        "x": 140,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "ab237bde6a98b26e",
+        "type": "comment",
+        "z": "d53953bb21483b35",
+        "name": "Subscriber",
+        "info": "",
+        "x": 520,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "e3520d406b372249",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
         "active": false,
         "tosidebar": true,
         "console": false,
@@ -313,8 +628,528 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 680,
-        "y": 560,
+        "x": 630,
+        "y": 500,
         "wires": []
+    },
+    {
+        "id": "ab61909e2990b01c",
+        "type": "natsio-pub",
+        "z": "d53953bb21483b35",
+        "server": "ecfe03d5fdd1898e",
+        "subject": "perf.test",
+        "message": "",
+        "x": 460,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a33009acac76bde7",
+        "type": "natsio-sub",
+        "z": "d53953bb21483b35",
+        "server": "ecfe03d5fdd1898e",
+        "subject": "perf.test",
+        "maxWanted": "",
+        "queue": "",
+        "x": 160,
+        "y": 300,
+        "wires": [
+            [
+                "fbe6d5e29075a5d5",
+                "22387fdb1d72140a"
+            ]
+        ]
+    },
+    {
+        "id": "476f5d952925e98e",
+        "type": "natsio-pub",
+        "z": "d53953bb21483b35",
+        "server": "ecfe03d5fdd1898e",
+        "subject": "perf-results",
+        "message": "",
+        "x": 180,
+        "y": 740,
+        "wires": []
+    },
+    {
+        "id": "badf9d925a4f18e7",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 690,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "22387fdb1d72140a",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "e2d9205d9a882864",
+        "type": "comment",
+        "z": "d53953bb21483b35",
+        "name": "State ",
+        "info": "",
+        "x": 470,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "2b887ff3c55045f9",
+        "type": "conf ping",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "host": "",
+        "timeout": "5",
+        "requests": "1",
+        "x": 210,
+        "y": 560,
+        "wires": [
+            [
+                "9178cb06f68c419a",
+                "265a80b68651ca90"
+            ]
+        ]
+    },
+    {
+        "id": "9178cb06f68c419a",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1110,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "265a80b68651ca90",
+        "type": "template",
+        "z": "d53953bb21483b35",
+        "name": "Write perf result object ",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"icmp_latency\":\"{{payload}}\",\"msg_latency\":\"{{_payload.latency}}\",\"source\":\"{{global.ip}}\",\"sourceregion\":\"{{_payload.regionName}}\",\"sourceorg\":\"{{_payload.org}}\",\"dest\":\"{{_payload.extip}}\",\"destregion\":\"{{_payload.publishregion}}\",\"destorg\":\"{{_payload.publishorg}}\"}",
+        "output": "json",
+        "x": 220,
+        "y": 600,
+        "wires": [
+            [
+                "6b4b44efa1aaf78a",
+                "139bdf71ead103db"
+            ]
+        ]
+    },
+    {
+        "id": "6b4b44efa1aaf78a",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1150,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "139bdf71ead103db",
+        "type": "template",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "perf-results.{{global.ip}}",
+        "output": "str",
+        "x": 180,
+        "y": 640,
+        "wires": [
+            [
+                "476f5d952925e98e",
+                "c3589d57044b7081"
+            ]
+        ]
+    },
+    {
+        "id": "c3589d57044b7081",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 430,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "f328f065e78ca340",
+        "type": "natsio-sub",
+        "z": "d53953bb21483b35",
+        "server": "ecfe03d5fdd1898e",
+        "subject": "perf-results.>",
+        "maxWanted": "",
+        "queue": "",
+        "x": 200,
+        "y": 820,
+        "wires": [
+            [
+                "11560796016fa80e",
+                "58f08d92d8926375",
+                "f5749da37665d62c"
+            ]
+        ]
+    },
+    {
+        "id": "0105f860633c19c9",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "04f20b092cdc03ed",
+        "type": "ui_table",
+        "z": "d53953bb21483b35",
+        "group": "e6705d33d2a6107f",
+        "name": "",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "columns": [],
+        "outputs": 0,
+        "cts": false,
+        "x": 1010,
+        "y": 1180,
+        "wires": []
+    },
+    {
+        "id": "bf282dfa115dc5b3",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "5ee9ca8ed7eb0e21",
+        "type": "json",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 530,
+        "y": 920,
+        "wires": [
+            [
+                "bf282dfa115dc5b3"
+            ]
+        ]
+    },
+    {
+        "id": "d69d98b83cf04f71",
+        "type": "prometheus-exporter",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "metric": "d3e8645123b2bada",
+        "x": 630,
+        "y": 960,
+        "wires": []
+    },
+    {
+        "id": "58f08d92d8926375",
+        "type": "template",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"op\":\"set\",\"val\":{{payload.msg_latency}},\"labels\":{\"sourceip\":\"{{payload.source}}\",\"sourceregion\":\"{{payload.sourceregion}}\",\"sourceorg\":\"{{payload.sourceorg}}\",\"destip\":\"{{payload.dest}}\",\"destregion\":\"{{payload.destregion}}\",\"destorg\":\"{{payload.destorg}}\"}}",
+        "output": "json",
+        "x": 360,
+        "y": 880,
+        "wires": [
+            [
+                "d69d98b83cf04f71"
+            ]
+        ]
+    },
+    {
+        "id": "9eb2423556c84982",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "64a641cd50541f0e",
+        "type": "trigger",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "val",
+        "op2type": "val",
+        "duration": "250",
+        "extend": "false",
+        "overrideDelay": "false",
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 180,
+        "y": 1240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "8ceb02f8f19a77ef",
+        "type": "merge",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "timeout": "",
+        "x": 90,
+        "y": 1140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "11560796016fa80e",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "6d1b6815ea183e84",
+        "type": "file",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "filename": "/data/jsonfile",
+        "appendNewline": true,
+        "createDir": true,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 740,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c088da04cbcb8eea",
+        "type": "file in",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "filename": "/data/jsonfile",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "allProps": false,
+        "x": 450,
+        "y": 1220,
+        "wires": [
+            [
+                "5cb050c886b665ac"
+            ]
+        ]
+    },
+    {
+        "id": "7b4bafd05eeee70d",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 1340,
+        "wires": []
+    },
+    {
+        "id": "77538f4adc3994de",
+        "type": "mergeTopic",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "timeout": "",
+        "msglimit": 0,
+        "x": 110,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2a9782c16bec32f5",
+        "type": "prometheus-exporter",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "metric": "fb506465b3f35d99",
+        "x": 600,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "12c74204508e608d",
+        "type": "inject",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 260,
+        "y": 1080,
+        "wires": [
+            [
+                "c088da04cbcb8eea"
+            ]
+        ]
+    },
+    {
+        "id": "5cb050c886b665ac",
+        "type": "json",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 650,
+        "y": 1340,
+        "wires": [
+            [
+                "4dc26fabe1771abe"
+            ]
+        ]
+    },
+    {
+        "id": "4dc26fabe1771abe",
+        "type": "debug",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 1200,
+        "wires": []
+    },
+    {
+        "id": "f5749da37665d62c",
+        "type": "template",
+        "z": "d53953bb21483b35",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"op\":\"set\",\"val\":{{payload.icmp_latency}},\"labels\":{\"sourceip\":\"{{payload.source}}\",\"sourceregion\":\"{{payload.sourceregion}}\",\"sourceorg\":\"{{payload.sourceorg}}\",\"destip\":\"{{payload.dest}}\",\"destregion\":\"{{payload.destregion}}\",\"destorg\":\"{{payload.destorg}}\"}}",
+        "output": "json",
+        "x": 340,
+        "y": 960,
+        "wires": [
+            [
+                "2a9782c16bec32f5"
+            ]
+        ]
     }
 ]
