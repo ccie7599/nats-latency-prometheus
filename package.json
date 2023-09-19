@@ -4,7 +4,11 @@
     "version": "0.0.1",
     "dependencies": {
         "node-red": "3.0.2",
-        "node-red-contrib-moment": "~5.0.0"
+        "node-red-configurable-ping": "~1.0.1",
+        "node-red-contrib-nats": "~0.0.2",
+        "node-red-contrib-natsio": "~0.6.1",
+        "node-red-contrib-natsio-tool": "~0.0.2",
+        "node-red-contrib-prometheus-exporter": "~1.0.5"
     },
     "scripts": {
         "start": "node $NODE_OPTIONS node_modules/node-red/red.js $FLOWS",
