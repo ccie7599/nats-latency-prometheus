@@ -16,37 +16,6 @@
         "env": []
     },
     {
-        "id": "3c9fafa.7dd6a5",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "demo-na.mqtttest.com",
-        "port": "8883",
-        "tls": "2d748829.2503d8",
-        "clientid": "$(CLIENTID)",
-        "autoConnect": true,
-        "usetls": true,
-        "compatmode": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "demo/docker/clientstate/connect",
-        "birthQos": "0",
-        "birthRetain": "false",
-        "birthPayload": "$(CLIENTID)",
-        "birthMsg": {},
-        "closeTopic": "demo/docker/clientstate/close",
-        "closeQos": "0",
-        "closeRetain": "false",
-        "closePayload": "$(CLIENTID)",
-        "closeMsg": {},
-        "willTopic": "demo/docker/clientstate/lastwill",
-        "willQos": "0",
-        "willRetain": "false",
-        "willPayload": "$(CLIENTID)",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
         "id": "2d748829.2503d8",
         "type": "tls-config",
         "name": "demo-na.mqtttest.com",
@@ -66,148 +35,6 @@
         "host": "nats",
         "port": "4222",
         "json": true
-    },
-    {
-        "id": "0c2b386ad7972d20",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "nats",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "sessionExpiry": ""
-    },
-    {
-        "id": "4caec7f47efdb22f",
-        "type": "ui_tab",
-        "name": "Home",
-        "icon": "dashboard",
-        "disabled": false,
-        "hidden": true
-    },
-    {
-        "id": "1856a81f5a215397",
-        "type": "ui_base",
-        "theme": {
-            "name": "theme-light",
-            "lightTheme": {
-                "default": "#0094CE",
-                "baseColor": "#0094CE",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": true,
-                "reset": false
-            },
-            "darkTheme": {
-                "default": "#097479",
-                "baseColor": "#097479",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
-                "edited": false
-            },
-            "customTheme": {
-                "name": "Untitled Theme 1",
-                "default": "#4B7930",
-                "baseColor": "#4B7930",
-                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-            },
-            "themeState": {
-                "base-color": {
-                    "default": "#0094CE",
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-titlebar-backgroundColor": {
-                    "value": "#0094CE",
-                    "edited": false
-                },
-                "page-backgroundColor": {
-                    "value": "#fafafa",
-                    "edited": false
-                },
-                "page-sidebar-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-textColor": {
-                    "value": "#1bbfff",
-                    "edited": false
-                },
-                "group-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "group-backgroundColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "widget-textColor": {
-                    "value": "#111111",
-                    "edited": false
-                },
-                "widget-backgroundColor": {
-                    "value": "#0094ce",
-                    "edited": false
-                },
-                "widget-borderColor": {
-                    "value": "#ffffff",
-                    "edited": false
-                },
-                "base-font": {
-                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
-                }
-            },
-            "angularTheme": {
-                "primary": "indigo",
-                "accents": "blue",
-                "warn": "red",
-                "background": "grey",
-                "palette": "light"
-            }
-        },
-        "site": {
-            "name": "Node-RED Dashboard",
-            "hideToolbar": "false",
-            "allowSwipe": "false",
-            "lockMenu": "false",
-            "allowTempTheme": "true",
-            "dateFormat": "DD/MM/YYYY",
-            "sizes": {
-                "sx": 48,
-                "sy": 48,
-                "gx": 6,
-                "gy": 6,
-                "cx": 6,
-                "cy": 6,
-                "px": 0,
-                "py": 0
-            }
-        }
-    },
-    {
-        "id": "e6705d33d2a6107f",
-        "type": "ui_group",
-        "name": "Default",
-        "tab": "4caec7f47efdb22f",
-        "order": 1,
-        "disp": false,
-        "width": "16",
-        "collapse": false,
-        "className": ""
     },
     {
         "id": "d3e8645123b2bada",
@@ -855,22 +682,6 @@
         "wires": []
     },
     {
-        "id": "04f20b092cdc03ed",
-        "type": "ui_table",
-        "z": "d53953bb21483b35",
-        "group": "e6705d33d2a6107f",
-        "name": "",
-        "order": 1,
-        "width": 0,
-        "height": 0,
-        "columns": [],
-        "outputs": 0,
-        "cts": false,
-        "x": 1010,
-        "y": 1180,
-        "wires": []
-    },
-    {
         "id": "bf282dfa115dc5b3",
         "type": "debug",
         "z": "d53953bb21483b35",
@@ -971,18 +782,6 @@
         ]
     },
     {
-        "id": "8ceb02f8f19a77ef",
-        "type": "merge",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "timeout": "",
-        "x": 90,
-        "y": 1140,
-        "wires": [
-            []
-        ]
-    },
-    {
         "id": "11560796016fa80e",
         "type": "debug",
         "z": "d53953bb21483b35",
@@ -1048,19 +847,6 @@
         "x": 390,
         "y": 1340,
         "wires": []
-    },
-    {
-        "id": "77538f4adc3994de",
-        "type": "mergeTopic",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "timeout": "",
-        "msglimit": 0,
-        "x": 110,
-        "y": 1060,
-        "wires": [
-            []
-        ]
     },
     {
         "id": "2a9782c16bec32f5",
