@@ -14,7 +14,7 @@
  * limitations under the License.
  **/
 process.env.CLIENTID = "example",
-process.env.JWT = "PNPDZZE7SICG2PGAX2HBI4CPJI",
+process.env.JWT = "OB3C63DZ4SYSAI3JOQKB6K323I",
 
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
