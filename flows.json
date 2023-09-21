@@ -8,33 +8,12 @@
         "env": []
     },
     {
-        "id": "d53953bb21483b35",
+        "id": "256f0a90cb7e8855",
         "type": "tab",
         "label": "Pub/Sub Perf Test",
         "disabled": false,
         "info": "",
         "env": []
-    },
-    {
-        "id": "2d748829.2503d8",
-        "type": "tls-config",
-        "name": "demo-na.mqtttest.com",
-        "cert": "",
-        "key": "",
-        "ca": "",
-        "certname": "",
-        "keyname": "",
-        "caname": "",
-        "servername": "demo-na.mqtttest.com",
-        "verifyservercert": true
-    },
-    {
-        "id": "a0db7af4440d1004",
-        "type": "natsio-server",
-        "name": "",
-        "host": "nats",
-        "port": "4222",
-        "json": true
     },
     {
         "id": "d3e8645123b2bada",
@@ -56,9 +35,17 @@
         "id": "ecfe03d5fdd1898e",
         "type": "natsio-server",
         "name": "",
-        "host": "172.234.31.252",
+        "host": "127.0.0.1",
         "port": "4222",
         "json": true
+    },
+    {
+        "id": "721141fde1080d32",
+        "type": "prometheus-metric-config",
+        "name": "rtt",
+        "help": "rtt measurement for traceroute map ",
+        "labels": "host,dest,hop,loss,ip",
+        "mtype": "gauge"
     },
     {
         "id": "acec7975370bbbc1",
@@ -287,9 +274,9 @@
         "wires": []
     },
     {
-        "id": "304312255a531ba3",
+        "id": "cf90c23ce274d349",
         "type": "inject",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Inject every second",
         "props": [
             {
@@ -310,14 +297,14 @@
         "y": 100,
         "wires": [
             [
-                "bc925c22a0c61c27"
+                "930f5ea381574fb1"
             ]
         ]
     },
     {
-        "id": "582bc5e9582b28fd",
+        "id": "de949f89eae62630",
         "type": "function",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Add current epoch timestamp ",
         "func": "msg.payload.time = Date.now() \nreturn msg;",
         "outputs": 1,
@@ -326,31 +313,31 @@
         "y": 180,
         "wires": [
             [
-                "ab61909e2990b01c",
-                "badf9d925a4f18e7"
+                "6c92ccc9f00f92e0",
+                "098b1443efb8c730"
             ]
         ]
     },
     {
-        "id": "fbe6d5e29075a5d5",
+        "id": "f4f9d6bc5d7f3780",
         "type": "function",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Calculate Time Difference ",
         "func": "var now = Date.now();\nvar then = msg.payload.time;\nmsg.payload.latency = now - then;\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 230,
-        "y": 480,
+        "x": 190,
+        "y": 460,
         "wires": [
             [
-                "cc8e334661ec7a7c"
+                "96c4b0d539030f93"
             ]
         ]
     },
     {
-        "id": "bc925c22a0c61c27",
+        "id": "930f5ea381574fb1",
         "type": "template",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Extract Geo and Org info from global variables",
         "field": "payload",
         "fieldType": "msg",
@@ -362,14 +349,14 @@
         "y": 140,
         "wires": [
             [
-                "582bc5e9582b28fd"
+                "de949f89eae62630"
             ]
         ]
     },
     {
-        "id": "cc8e334661ec7a7c",
+        "id": "96c4b0d539030f93",
         "type": "change",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Extract Geo Location from Global Variables",
         "rules": [
             {
@@ -417,15 +404,17 @@
         "y": 520,
         "wires": [
             [
-                "e3520d406b372249",
-                "2b887ff3c55045f9"
+                "9139355971f1e28c",
+                "7e6e22beb3a77fc5",
+                "3e49864f27176a09",
+                "1bc2cc594e271eb2"
             ]
         ]
     },
     {
-        "id": "90f5b0103f5da3f1",
+        "id": "a8b31caac26c1d43",
         "type": "comment",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Publisher",
         "info": "",
         "x": 140,
@@ -433,9 +422,9 @@
         "wires": []
     },
     {
-        "id": "ab237bde6a98b26e",
+        "id": "361245a57d5c6863",
         "type": "comment",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Subscriber",
         "info": "",
         "x": 520,
@@ -443,9 +432,9 @@
         "wires": []
     },
     {
-        "id": "e3520d406b372249",
+        "id": "9139355971f1e28c",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -455,14 +444,14 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 630,
-        "y": 500,
+        "x": 690,
+        "y": 380,
         "wires": []
     },
     {
-        "id": "ab61909e2990b01c",
+        "id": "6c92ccc9f00f92e0",
         "type": "natsio-pub",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "server": "ecfe03d5fdd1898e",
         "subject": "perf.test",
         "message": "",
@@ -471,9 +460,9 @@
         "wires": []
     },
     {
-        "id": "a33009acac76bde7",
+        "id": "fa18f6a2557613d7",
         "type": "natsio-sub",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "server": "ecfe03d5fdd1898e",
         "subject": "perf.test",
         "maxWanted": "",
@@ -482,26 +471,26 @@
         "y": 300,
         "wires": [
             [
-                "fbe6d5e29075a5d5",
-                "22387fdb1d72140a"
+                "f4f9d6bc5d7f3780",
+                "4110bddb0dc28b10"
             ]
         ]
     },
     {
-        "id": "476f5d952925e98e",
+        "id": "1d759b58943c0108",
         "type": "natsio-pub",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "server": "ecfe03d5fdd1898e",
         "subject": "perf-results",
         "message": "",
-        "x": 180,
-        "y": 740,
+        "x": 280,
+        "y": 760,
         "wires": []
     },
     {
-        "id": "badf9d925a4f18e7",
+        "id": "098b1443efb8c730",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -513,9 +502,9 @@
         "wires": []
     },
     {
-        "id": "22387fdb1d72140a",
+        "id": "4110bddb0dc28b10",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -530,9 +519,9 @@
         "wires": []
     },
     {
-        "id": "e2d9205d9a882864",
+        "id": "d20f6ea3d2188fe9",
         "type": "comment",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "State ",
         "info": "",
         "x": 470,
@@ -540,9 +529,9 @@
         "wires": []
     },
     {
-        "id": "2b887ff3c55045f9",
+        "id": "7e6e22beb3a77fc5",
         "type": "conf ping",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "host": "",
         "timeout": "5",
@@ -551,15 +540,15 @@
         "y": 560,
         "wires": [
             [
-                "9178cb06f68c419a",
-                "265a80b68651ca90"
+                "6d6f72896d3060a6",
+                "a9b8af283038e5b0"
             ]
         ]
     },
     {
-        "id": "9178cb06f68c419a",
+        "id": "6d6f72896d3060a6",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -574,9 +563,9 @@
         "wires": []
     },
     {
-        "id": "265a80b68651ca90",
+        "id": "a9b8af283038e5b0",
         "type": "template",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "Write perf result object ",
         "field": "payload",
         "fieldType": "msg",
@@ -588,15 +577,15 @@
         "y": 600,
         "wires": [
             [
-                "6b4b44efa1aaf78a",
-                "139bdf71ead103db"
+                "3d605bc486703b72",
+                "eb3ba2865621ddf3"
             ]
         ]
     },
     {
-        "id": "6b4b44efa1aaf78a",
+        "id": "3d605bc486703b72",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -611,9 +600,9 @@
         "wires": []
     },
     {
-        "id": "139bdf71ead103db",
+        "id": "eb3ba2865621ddf3",
         "type": "template",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "field": "topic",
         "fieldType": "msg",
@@ -622,18 +611,18 @@
         "template": "perf-results.{{global.ip}}",
         "output": "str",
         "x": 180,
-        "y": 640,
+        "y": 660,
         "wires": [
             [
-                "476f5d952925e98e",
-                "c3589d57044b7081"
+                "1d759b58943c0108",
+                "ce7fe4ce67165e00"
             ]
         ]
     },
     {
-        "id": "c3589d57044b7081",
+        "id": "ce7fe4ce67165e00",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -643,32 +632,33 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 430,
+        "x": 590,
         "y": 680,
         "wires": []
     },
     {
-        "id": "f328f065e78ca340",
+        "id": "ed0d679e113253d1",
         "type": "natsio-sub",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "server": "ecfe03d5fdd1898e",
         "subject": "perf-results.>",
         "maxWanted": "",
         "queue": "",
-        "x": 200,
+        "x": 180,
         "y": 820,
         "wires": [
             [
-                "11560796016fa80e",
-                "58f08d92d8926375",
-                "f5749da37665d62c"
+                "80487ec44b392c3b",
+                "47c4e9badfdb31ca",
+                "521c1d217135727d",
+                "2447fc3d33ce0796"
             ]
         ]
     },
     {
-        "id": "0105f860633c19c9",
+        "id": "5887128f6b0323b3",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -682,9 +672,9 @@
         "wires": []
     },
     {
-        "id": "bf282dfa115dc5b3",
+        "id": "8a5c3394ec0fe9ca",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": false,
         "tosidebar": true,
@@ -698,9 +688,9 @@
         "wires": []
     },
     {
-        "id": "5ee9ca8ed7eb0e21",
+        "id": "d38c0026ff3a51e7",
         "type": "json",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "property": "payload",
         "action": "",
@@ -709,14 +699,14 @@
         "y": 920,
         "wires": [
             [
-                "bf282dfa115dc5b3"
+                "8a5c3394ec0fe9ca"
             ]
         ]
     },
     {
-        "id": "d69d98b83cf04f71",
+        "id": "63d1daeaf3ed7cb1",
         "type": "prometheus-exporter",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "metric": "d3e8645123b2bada",
         "x": 630,
@@ -724,9 +714,9 @@
         "wires": []
     },
     {
-        "id": "58f08d92d8926375",
+        "id": "47c4e9badfdb31ca",
         "type": "template",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "field": "payload",
         "fieldType": "msg",
@@ -738,14 +728,14 @@
         "y": 880,
         "wires": [
             [
-                "d69d98b83cf04f71"
+                "63d1daeaf3ed7cb1"
             ]
         ]
     },
     {
-        "id": "9eb2423556c84982",
+        "id": "7e4ae42fa3984ea8",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -759,34 +749,11 @@
         "wires": []
     },
     {
-        "id": "64a641cd50541f0e",
-        "type": "trigger",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "op1": "1",
-        "op2": "0",
-        "op1type": "val",
-        "op2type": "val",
-        "duration": "250",
-        "extend": "false",
-        "overrideDelay": "false",
-        "units": "ms",
-        "reset": "",
-        "bytopic": "all",
-        "topic": "topic",
-        "outputs": 1,
-        "x": 180,
-        "y": 1240,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "11560796016fa80e",
+        "id": "80487ec44b392c3b",
         "type": "debug",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -798,9 +765,9 @@
         "wires": []
     },
     {
-        "id": "6d1b6815ea183e84",
+        "id": "b664f9eeb5c8ac48",
         "type": "file",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "filename": "/data/jsonfile",
         "appendNewline": true,
@@ -814,44 +781,9 @@
         ]
     },
     {
-        "id": "c088da04cbcb8eea",
-        "type": "file in",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "filename": "/data/jsonfile",
-        "format": "utf8",
-        "chunk": false,
-        "sendError": false,
-        "encoding": "none",
-        "allProps": false,
-        "x": 450,
-        "y": 1220,
-        "wires": [
-            [
-                "5cb050c886b665ac"
-            ]
-        ]
-    },
-    {
-        "id": "7b4bafd05eeee70d",
-        "type": "debug",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 390,
-        "y": 1340,
-        "wires": []
-    },
-    {
-        "id": "2a9782c16bec32f5",
+        "id": "cb9a517ab7364575",
         "type": "prometheus-exporter",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "metric": "fb506465b3f35d99",
         "x": 600,
@@ -859,70 +791,9 @@
         "wires": []
     },
     {
-        "id": "12c74204508e608d",
-        "type": "inject",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 260,
-        "y": 1080,
-        "wires": [
-            [
-                "c088da04cbcb8eea"
-            ]
-        ]
-    },
-    {
-        "id": "5cb050c886b665ac",
-        "type": "json",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 650,
-        "y": 1340,
-        "wires": [
-            [
-                "4dc26fabe1771abe"
-            ]
-        ]
-    },
-    {
-        "id": "4dc26fabe1771abe",
-        "type": "debug",
-        "z": "d53953bb21483b35",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 870,
-        "y": 1200,
-        "wires": []
-    },
-    {
-        "id": "f5749da37665d62c",
+        "id": "521c1d217135727d",
         "type": "template",
-        "z": "d53953bb21483b35",
+        "z": "256f0a90cb7e8855",
         "name": "",
         "field": "payload",
         "fieldType": "msg",
@@ -930,11 +801,133 @@
         "syntax": "mustache",
         "template": "{\"op\":\"set\",\"val\":{{payload.icmp_latency}},\"labels\":{\"sourceip\":\"{{payload.source}}\",\"sourceregion\":\"{{payload.sourceregion}}\",\"sourceorg\":\"{{payload.sourceorg}}\",\"destip\":\"{{payload.dest}}\",\"destregion\":\"{{payload.destregion}}\",\"destorg\":\"{{payload.destorg}}\"}}",
         "output": "json",
-        "x": 340,
-        "y": 960,
+        "x": 360,
+        "y": 940,
         "wires": [
             [
-                "2a9782c16bec32f5"
+                "cb9a517ab7364575"
+            ]
+        ]
+    },
+    {
+        "id": "3e49864f27176a09",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "1st hop measure",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{payload.extip}}\",\"rtt\":0,\"hop\":1,\"loss\":0}",
+        "output": "json",
+        "x": 570,
+        "y": 460,
+        "wires": [
+            [
+                "3a29b6a0c3ab7831",
+                "27be8405e436bf9e"
+            ]
+        ]
+    },
+    {
+        "id": "3a29b6a0c3ab7831",
+        "type": "debug",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "1bc2cc594e271eb2",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "2nd hop measure",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{global.ip}}\",\"rtt\":{{payload.latency}},\"hop\":2,\"loss\":0}",
+        "output": "json",
+        "x": 510,
+        "y": 540,
+        "wires": [
+            [
+                "0224160449c8beaf",
+                "27be8405e436bf9e"
+            ]
+        ]
+    },
+    {
+        "id": "0224160449c8beaf",
+        "type": "debug",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 810,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "2447fc3d33ce0796",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"op\":\"set\",\"val\":{{payload.rtt}},\"labels\":{\"ip\":\"{{payload.ip}}\",\"host\":\"{{payload.host}}\",\"dest\":\"{{payload.dest}}\",\"hop\":{{payload.hop}},\"loss\":{{payload.loss}}}}",
+        "output": "json",
+        "x": 420,
+        "y": 1060,
+        "wires": [
+            [
+                "9a71e8cec2970b34"
+            ]
+        ]
+    },
+    {
+        "id": "9a71e8cec2970b34",
+        "type": "prometheus-exporter",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "metric": "721141fde1080d32",
+        "x": 550,
+        "y": 1100,
+        "wires": []
+    },
+    {
+        "id": "27be8405e436bf9e",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "field": "topic",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "perf-results.{{global.ip}}",
+        "output": "str",
+        "x": 380,
+        "y": 700,
+        "wires": [
+            [
+                "1d759b58943c0108"
             ]
         ]
     }
