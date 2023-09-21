@@ -48,6 +48,33 @@
         "mtype": "gauge"
     },
     {
+        "id": "73b578ab563cd733",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "$(CLIENTID)",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "acec7975370bbbc1",
         "type": "http request",
         "z": "6a61f9e65168b7db",
@@ -313,8 +340,8 @@
         "y": 180,
         "wires": [
             [
-                "6c92ccc9f00f92e0",
-                "098b1443efb8c730"
+                "098b1443efb8c730",
+                "957fc7fc9bf9fb5b"
             ]
         ]
     },
@@ -449,45 +476,6 @@
         "wires": []
     },
     {
-        "id": "6c92ccc9f00f92e0",
-        "type": "natsio-pub",
-        "z": "256f0a90cb7e8855",
-        "server": "ecfe03d5fdd1898e",
-        "subject": "perf.test",
-        "message": "",
-        "x": 460,
-        "y": 200,
-        "wires": []
-    },
-    {
-        "id": "fa18f6a2557613d7",
-        "type": "natsio-sub",
-        "z": "256f0a90cb7e8855",
-        "server": "ecfe03d5fdd1898e",
-        "subject": "perf.test",
-        "maxWanted": "",
-        "queue": "",
-        "x": 160,
-        "y": 300,
-        "wires": [
-            [
-                "f4f9d6bc5d7f3780",
-                "4110bddb0dc28b10"
-            ]
-        ]
-    },
-    {
-        "id": "1d759b58943c0108",
-        "type": "natsio-pub",
-        "z": "256f0a90cb7e8855",
-        "server": "ecfe03d5fdd1898e",
-        "subject": "perf-results",
-        "message": "",
-        "x": 280,
-        "y": 760,
-        "wires": []
-    },
-    {
         "id": "098b1443efb8c730",
         "type": "debug",
         "z": "256f0a90cb7e8855",
@@ -614,8 +602,8 @@
         "y": 660,
         "wires": [
             [
-                "1d759b58943c0108",
-                "ce7fe4ce67165e00"
+                "ce7fe4ce67165e00",
+                "08900348a84c71ec"
             ]
         ]
     },
@@ -635,25 +623,6 @@
         "x": 590,
         "y": 680,
         "wires": []
-    },
-    {
-        "id": "ed0d679e113253d1",
-        "type": "natsio-sub",
-        "z": "256f0a90cb7e8855",
-        "server": "ecfe03d5fdd1898e",
-        "subject": "perf-results.>",
-        "maxWanted": "",
-        "queue": "",
-        "x": 180,
-        "y": 820,
-        "wires": [
-            [
-                "80487ec44b392c3b",
-                "47c4e9badfdb31ca",
-                "521c1d217135727d",
-                "2447fc3d33ce0796"
-            ]
-        ]
     },
     {
         "id": "5887128f6b0323b3",
@@ -927,7 +896,87 @@
         "y": 700,
         "wires": [
             [
-                "1d759b58943c0108"
+                "08900348a84c71ec"
+            ]
+        ]
+    },
+    {
+        "id": "957fc7fc9bf9fb5b",
+        "type": "mqtt out",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "topic": "perftest",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "73b578ab563cd733",
+        "x": 720,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "fdb7a990dbf25ddf",
+        "type": "mqtt in",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "topic": "perftest",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "73b578ab563cd733",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 150,
+        "y": 240,
+        "wires": [
+            [
+                "f4f9d6bc5d7f3780"
+            ]
+        ]
+    },
+    {
+        "id": "08900348a84c71ec",
+        "type": "mqtt out",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "topic": "perfresults",
+        "qos": "",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "73b578ab563cd733",
+        "x": 290,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "349333c45ab9151c",
+        "type": "mqtt in",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "topic": "perfresults",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "73b578ab563cd733",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 100,
+        "y": 760,
+        "wires": [
+            [
+                "47c4e9badfdb31ca",
+                "521c1d217135727d",
+                "2447fc3d33ce0796"
             ]
         ]
     }
