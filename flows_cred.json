@@ -2,4 +2,9 @@
     "ecfe03d5fdd1898e": {
         "username": "$(CLIENTID)",
         "password": "$(JWT)"
+    },
+    "73b578ab563cd733": {
+        "user": "$(CLIENTID)",
+        "password": "$(JWT)"
     }
+}
