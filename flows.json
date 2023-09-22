@@ -32,14 +32,6 @@
         "mtype": "gauge"
     },
     {
-        "id": "ecfe03d5fdd1898e",
-        "type": "natsio-server",
-        "name": "",
-        "host": "127.0.0.1",
-        "port": "4222",
-        "json": true
-    },
-    {
         "id": "721141fde1080d32",
         "type": "prometheus-metric-config",
         "name": "rtt",
@@ -51,9 +43,9 @@
         "id": "73b578ab563cd733",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "localhost",
+        "broker": "nats.connected-cloud.io.akadns.net",
         "port": "1883",
-        "clientid": "$(CLIENTID)",
+        "clientid": "",
         "autoConnect": true,
         "usetls": false,
         "protocolVersion": "4",
