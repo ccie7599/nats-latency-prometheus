@@ -20,7 +20,7 @@
         "type": "prometheus-metric-config",
         "name": "message_latency",
         "help": "publish-to-subscribe end to end message latency",
-        "labels": "sourceip,sourceregion,sourceorg,destip,destregion,destorg",
+        "labels": "source,dest",
         "mtype": "gauge"
     },
     {
@@ -43,7 +43,7 @@
         "id": "73b578ab563cd733",
         "type": "mqtt-broker",
         "name": "",
-        "broker": "nats.connected-cloud.io.akadns.net",
+        "broker": "mqtt.connected-cloud.io.akadns.net",
         "port": "1883",
         "clientid": "",
         "autoConnect": true,
@@ -249,7 +249,7 @@
         "type": "debug",
         "z": "6a61f9e65168b7db",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -265,7 +265,7 @@
         "type": "debug",
         "z": "6a61f9e65168b7db",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -281,7 +281,7 @@
         "type": "debug",
         "z": "6a61f9e65168b7db",
         "name": "",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -311,6 +311,7 @@
         "once": false,
         "onceDelay": 0.1,
         "topic": "",
+        "payload": "",
         "payloadType": "date",
         "x": 160,
         "y": 100,
@@ -332,7 +333,6 @@
         "y": 180,
         "wires": [
             [
-                "098b1443efb8c730",
                 "957fc7fc9bf9fb5b"
             ]
         ]
@@ -345,11 +345,12 @@
         "func": "var now = Date.now();\nvar then = msg.payload.time;\nmsg.payload.latency = now - then;\nreturn msg",
         "outputs": 1,
         "noerr": 0,
-        "x": 190,
-        "y": 460,
+        "x": 170,
+        "y": 340,
         "wires": [
             [
-                "96c4b0d539030f93"
+                "96c4b0d539030f93",
+                "4110bddb0dc28b10"
             ]
         ]
     },
@@ -362,7 +363,7 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\"extip\":\"{{global.ip}}\",\"publishregion\":\"{{global.regionName}}\",\"publishcountry\":\"{{global.countryCode}}\",\"publishorg\":\"{{global.org}}\"}",
+        "template": "{\"extip\":\"{{global.ip}}\",\"publishregion\":\"{{global.regionName}}\",\"publishcountry\":\"{{global.countryCode}}\",\"publishorg\":\"{{global.org}}\",\"AkamaiRegion\":\"{{global.AkamaiRegion}}\",\"AkamaiIP\":\"{{global.AkamaiIP}}\",\"AkamaiLatency\":\"{{global.AkamaiLatency}}\"}",
         "output": "json",
         "x": 240,
         "y": 140,
@@ -412,6 +413,27 @@
                 "pt": "msg",
                 "to": "payload.extip",
                 "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.AkamaiRegion",
+                "pt": "msg",
+                "to": "AkamaiRegion",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.AkamaiIP",
+                "pt": "msg",
+                "to": "AkamaiIP",
+                "tot": "global"
+            },
+            {
+                "t": "set",
+                "p": "payload.AkamaiLatency",
+                "pt": "msg",
+                "to": "AkamaiLatency",
+                "tot": "global"
             }
         ],
         "action": "",
@@ -419,14 +441,15 @@
         "from": "",
         "to": "",
         "reg": false,
-        "x": 290,
-        "y": 520,
+        "x": 230,
+        "y": 420,
         "wires": [
             [
                 "9139355971f1e28c",
-                "7e6e22beb3a77fc5",
                 "3e49864f27176a09",
-                "1bc2cc594e271eb2"
+                "1bc2cc594e271eb2",
+                "ac7eb32bb241a264",
+                "46798b689406550f"
             ]
         ]
     },
@@ -463,22 +486,8 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 690,
-        "y": 380,
-        "wires": []
-    },
-    {
-        "id": "098b1443efb8c730",
-        "type": "debug",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "x": 690,
-        "y": 160,
+        "x": 890,
+        "y": 360,
         "wires": []
     },
     {
@@ -499,33 +508,6 @@
         "wires": []
     },
     {
-        "id": "d20f6ea3d2188fe9",
-        "type": "comment",
-        "z": "256f0a90cb7e8855",
-        "name": "State ",
-        "info": "",
-        "x": 470,
-        "y": 760,
-        "wires": []
-    },
-    {
-        "id": "7e6e22beb3a77fc5",
-        "type": "conf ping",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "host": "",
-        "timeout": "5",
-        "requests": "1",
-        "x": 210,
-        "y": 560,
-        "wires": [
-            [
-                "6d6f72896d3060a6",
-                "a9b8af283038e5b0"
-            ]
-        ]
-    },
-    {
         "id": "6d6f72896d3060a6",
         "type": "debug",
         "z": "256f0a90cb7e8855",
@@ -543,26 +525,6 @@
         "wires": []
     },
     {
-        "id": "a9b8af283038e5b0",
-        "type": "template",
-        "z": "256f0a90cb7e8855",
-        "name": "Write perf result object ",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"icmp_latency\":\"{{payload}}\",\"msg_latency\":\"{{_payload.latency}}\",\"source\":\"{{global.ip}}\",\"sourceregion\":\"{{_payload.regionName}}\",\"sourceorg\":\"{{_payload.org}}\",\"dest\":\"{{_payload.extip}}\",\"destregion\":\"{{_payload.publishregion}}\",\"destorg\":\"{{_payload.publishorg}}\"}",
-        "output": "json",
-        "x": 220,
-        "y": 600,
-        "wires": [
-            [
-                "3d605bc486703b72",
-                "eb3ba2865621ddf3"
-            ]
-        ]
-    },
-    {
         "id": "3d605bc486703b72",
         "type": "debug",
         "z": "256f0a90cb7e8855",
@@ -575,29 +537,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 1150,
-        "y": 520,
+        "x": 890,
+        "y": 560,
         "wires": []
-    },
-    {
-        "id": "eb3ba2865621ddf3",
-        "type": "template",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "field": "topic",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "perf-results.{{global.ip}}",
-        "output": "str",
-        "x": 180,
-        "y": 660,
-        "wires": [
-            [
-                "ce7fe4ce67165e00",
-                "08900348a84c71ec"
-            ]
-        ]
     },
     {
         "id": "ce7fe4ce67165e00",
@@ -612,163 +554,9 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 590,
-        "y": 680,
+        "x": 290,
+        "y": 720,
         "wires": []
-    },
-    {
-        "id": "5887128f6b0323b3",
-        "type": "debug",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 810,
-        "y": 840,
-        "wires": []
-    },
-    {
-        "id": "8a5c3394ec0fe9ca",
-        "type": "debug",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 770,
-        "y": 920,
-        "wires": []
-    },
-    {
-        "id": "d38c0026ff3a51e7",
-        "type": "json",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 530,
-        "y": 920,
-        "wires": [
-            [
-                "8a5c3394ec0fe9ca"
-            ]
-        ]
-    },
-    {
-        "id": "63d1daeaf3ed7cb1",
-        "type": "prometheus-exporter",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "metric": "d3e8645123b2bada",
-        "x": 630,
-        "y": 960,
-        "wires": []
-    },
-    {
-        "id": "47c4e9badfdb31ca",
-        "type": "template",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"op\":\"set\",\"val\":{{payload.msg_latency}},\"labels\":{\"sourceip\":\"{{payload.source}}\",\"sourceregion\":\"{{payload.sourceregion}}\",\"sourceorg\":\"{{payload.sourceorg}}\",\"destip\":\"{{payload.dest}}\",\"destregion\":\"{{payload.destregion}}\",\"destorg\":\"{{payload.destorg}}\"}}",
-        "output": "json",
-        "x": 360,
-        "y": 880,
-        "wires": [
-            [
-                "63d1daeaf3ed7cb1"
-            ]
-        ]
-    },
-    {
-        "id": "7e4ae42fa3984ea8",
-        "type": "debug",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 1010,
-        "y": 1100,
-        "wires": []
-    },
-    {
-        "id": "80487ec44b392c3b",
-        "type": "debug",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "active": false,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 590,
-        "y": 820,
-        "wires": []
-    },
-    {
-        "id": "b664f9eeb5c8ac48",
-        "type": "file",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "filename": "/data/jsonfile",
-        "appendNewline": true,
-        "createDir": true,
-        "overwriteFile": "false",
-        "encoding": "none",
-        "x": 740,
-        "y": 1060,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "cb9a517ab7364575",
-        "type": "prometheus-exporter",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "metric": "fb506465b3f35d99",
-        "x": 600,
-        "y": 1000,
-        "wires": []
-    },
-    {
-        "id": "521c1d217135727d",
-        "type": "template",
-        "z": "256f0a90cb7e8855",
-        "name": "",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"op\":\"set\",\"val\":{{payload.icmp_latency}},\"labels\":{\"sourceip\":\"{{payload.source}}\",\"sourceregion\":\"{{payload.sourceregion}}\",\"sourceorg\":\"{{payload.sourceorg}}\",\"destip\":\"{{payload.dest}}\",\"destregion\":\"{{payload.destregion}}\",\"destorg\":\"{{payload.destorg}}\"}}",
-        "output": "json",
-        "x": 360,
-        "y": 940,
-        "wires": [
-            [
-                "cb9a517ab7364575"
-            ]
-        ]
     },
     {
         "id": "3e49864f27176a09",
@@ -781,8 +569,8 @@
         "syntax": "mustache",
         "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{payload.extip}}\",\"rtt\":0,\"hop\":1,\"loss\":0}",
         "output": "json",
-        "x": 570,
-        "y": 460,
+        "x": 710,
+        "y": 380,
         "wires": [
             [
                 "3a29b6a0c3ab7831",
@@ -803,7 +591,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 790,
+        "x": 1070,
         "y": 440,
         "wires": []
     },
@@ -816,10 +604,10 @@
         "fieldType": "msg",
         "format": "handlebars",
         "syntax": "mustache",
-        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{global.ip}}\",\"rtt\":{{payload.latency}},\"hop\":2,\"loss\":0}",
+        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{payload.AkamaiIP}}\",\"rtt\":{{payload.AkamaiLatency}},\"hop\":2,\"loss\":0}",
         "output": "json",
-        "x": 510,
-        "y": 540,
+        "x": 710,
+        "y": 420,
         "wires": [
             [
                 "0224160449c8beaf",
@@ -840,7 +628,7 @@
         "targetType": "full",
         "statusVal": "",
         "statusType": "auto",
-        "x": 810,
+        "x": 1070,
         "y": 500,
         "wires": []
     },
@@ -855,8 +643,8 @@
         "syntax": "mustache",
         "template": "{\"op\":\"set\",\"val\":{{payload.rtt}},\"labels\":{\"ip\":\"{{payload.ip}}\",\"host\":\"{{payload.host}}\",\"dest\":\"{{payload.dest}}\",\"hop\":{{payload.hop}},\"loss\":{{payload.loss}}}}",
         "output": "json",
-        "x": 420,
-        "y": 1060,
+        "x": 380,
+        "y": 960,
         "wires": [
             [
                 "9a71e8cec2970b34"
@@ -884,8 +672,8 @@
         "syntax": "mustache",
         "template": "perf-results.{{global.ip}}",
         "output": "str",
-        "x": 380,
-        "y": 700,
+        "x": 620,
+        "y": 580,
         "wires": [
             [
                 "08900348a84c71ec"
@@ -906,8 +694,8 @@
         "correl": "",
         "expiry": "",
         "broker": "73b578ab563cd733",
-        "x": 720,
-        "y": 220,
+        "x": 520,
+        "y": 180,
         "wires": []
     },
     {
@@ -923,8 +711,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 150,
-        "y": 240,
+        "x": 110,
+        "y": 280,
         "wires": [
             [
                 "f4f9d6bc5d7f3780"
@@ -945,8 +733,8 @@
         "correl": "",
         "expiry": "",
         "broker": "73b578ab563cd733",
-        "x": 290,
-        "y": 760,
+        "x": 270,
+        "y": 620,
         "wires": []
     },
     {
@@ -966,10 +754,369 @@
         "y": 760,
         "wires": [
             [
-                "47c4e9badfdb31ca",
-                "521c1d217135727d",
-                "2447fc3d33ce0796"
+                "2447fc3d33ce0796",
+                "ce7fe4ce67165e00"
             ]
         ]
+    },
+    {
+        "id": "1797f19d392917a9",
+        "type": "inject",
+        "z": "256f0a90cb7e8855",
+        "name": "Every 1 minute",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 600,
+        "y": 60,
+        "wires": [
+            [
+                "a9c3759ed03df16c"
+            ]
+        ]
+    },
+    {
+        "id": "54e2959b1106fa06",
+        "type": "comment",
+        "z": "256f0a90cb7e8855",
+        "name": "Determine Akamai IP ",
+        "info": "",
+        "x": 560,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "a9c3759ed03df16c",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "Format GeoIP Lookup",
+        "field": "url",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "http://ip-api.com/json/mqtt.connected-cloud.io.akadns.net",
+        "output": "str",
+        "x": 840,
+        "y": 60,
+        "wires": [
+            [
+                "b3521d85d87ac0e5"
+            ]
+        ]
+    },
+    {
+        "id": "b3521d85d87ac0e5",
+        "type": "http request",
+        "z": "256f0a90cb7e8855",
+        "name": "GeoIP Lookup",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1060,
+        "y": 60,
+        "wires": [
+            [
+                "4597af057156fb92"
+            ]
+        ]
+    },
+    {
+        "id": "4597af057156fb92",
+        "type": "change",
+        "z": "256f0a90cb7e8855",
+        "name": "Set Global Variables ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "AkamaiRegion",
+                "pt": "global",
+                "to": "payload.regionName",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "AkamaiCountry",
+                "pt": "global",
+                "to": "payload.countryCode",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "AkamaiOrg",
+                "pt": "global",
+                "to": "payload.org",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "AkamaiIP",
+                "pt": "global",
+                "to": "payload.query",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "host",
+                "pt": "msg",
+                "to": "payload.query",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37871b4ffb54bb0a",
+        "type": "conf ping",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "host": "",
+        "timeout": "5",
+        "requests": "1",
+        "x": 1070,
+        "y": 100,
+        "wires": [
+            [
+                "e44db5585b3b55bf",
+                "2e9e88f818535fc4"
+            ]
+        ]
+    },
+    {
+        "id": "22d5b03a526fde17",
+        "type": "change",
+        "z": "256f0a90cb7e8855",
+        "name": "Set Global Variables ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "host",
+                "pt": "msg",
+                "to": "AkamaiIP",
+                "tot": "global"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 840,
+        "y": 100,
+        "wires": [
+            [
+                "37871b4ffb54bb0a"
+            ]
+        ]
+    },
+    {
+        "id": "e0a3b8e0f95cb9b0",
+        "type": "inject",
+        "z": "256f0a90cb7e8855",
+        "name": "Every 1 minute",
+        "props": [],
+        "repeat": "60",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 600,
+        "y": 100,
+        "wires": [
+            [
+                "22d5b03a526fde17"
+            ]
+        ]
+    },
+    {
+        "id": "b1dbb3b1e7d08ac6",
+        "type": "change",
+        "z": "256f0a90cb7e8855",
+        "name": "Set Global Variables ",
+        "rules": [
+            {
+                "t": "set",
+                "p": "AkamaiLatency",
+                "pt": "global",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1280,
+        "y": 220,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e44db5585b3b55bf",
+        "type": "function",
+        "z": "256f0a90cb7e8855",
+        "name": "function 1",
+        "func": "var rtt = msg.payload;\nmsg.payload = rtt / 2;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 1160,
+        "y": 160,
+        "wires": [
+            [
+                "b1dbb3b1e7d08ac6",
+                "685cb7f3a1c904f3"
+            ]
+        ]
+    },
+    {
+        "id": "2e9e88f818535fc4",
+        "type": "debug",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1310,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "685cb7f3a1c904f3",
+        "type": "debug",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1350,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8f956e65bdfb20b4",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "3rd hop measure",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{global.AkamaiIP}}\",\"rtt\":{{payload.thirdhop}},\"hop\":3,\"loss\":0}",
+        "output": "json",
+        "x": 710,
+        "y": 460,
+        "wires": [
+            [
+                "27be8405e436bf9e"
+            ]
+        ]
+    },
+    {
+        "id": "ac7eb32bb241a264",
+        "type": "function",
+        "z": "256f0a90cb7e8855",
+        "name": "function 2",
+        "func": "var latency = msg.payload.latency;\nvar akalatency = msg.payload.AkamaiLatency;\nmsg.payload.thirdhop = latency - akalatency;\nreturn msg",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 460,
+        "wires": [
+            [
+                "8f956e65bdfb20b4",
+                "3d605bc486703b72"
+            ]
+        ]
+    },
+    {
+        "id": "46798b689406550f",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "4th hop measure",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{global.ip}}\",\"rtt\":{{payload.latency}},\"hop\":4,\"loss\":0}",
+        "output": "json",
+        "x": 390,
+        "y": 520,
+        "wires": [
+            [
+                "27be8405e436bf9e"
+            ]
+        ]
+    },
+    {
+        "id": "c3a8ffac0b6f931e",
+        "type": "comment",
+        "z": "256f0a90cb7e8855",
+        "name": "Metrics",
+        "info": "",
+        "x": 90,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "d4dfe7944a54a2c4",
+        "type": "debug",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 720,
+        "wires": []
     }
 ]
