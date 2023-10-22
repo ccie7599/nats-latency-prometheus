@@ -1,6 +1,6 @@
 [
     {
-        "id": "6a61f9e65168b7db",
+        "id": "91964d3a33343af2",
         "type": "tab",
         "label": "Set GeoIP ",
         "disabled": false,
@@ -8,23 +8,7 @@
         "env": []
     },
     {
-        "id": "256f0a90cb7e8855",
-        "type": "tab",
-        "label": "Publisher Test",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "7e83177a19532f50",
-        "type": "tab",
-        "label": "Subscriber Test",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "bd8bd36947968507",
+        "id": "29f88445b04cd468",
         "type": "tab",
         "label": "metrics processor",
         "disabled": false,
@@ -83,9 +67,9 @@
         "sessionExpiry": ""
     },
     {
-        "id": "acec7975370bbbc1",
+        "id": "e7de9b49b8dfd16d",
         "type": "http request",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Lookup public IP address",
         "method": "GET",
         "ret": "txt",
@@ -100,14 +84,14 @@
         "y": 140,
         "wires": [
             [
-                "a23ad39b489b16ca"
+                "34e09af26e16c0d4"
             ]
         ]
     },
     {
-        "id": "a23ad39b489b16ca",
+        "id": "34e09af26e16c0d4",
         "type": "template",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Format GeoIP Lookup",
         "field": "url",
         "fieldType": "msg",
@@ -119,14 +103,14 @@
         "y": 180,
         "wires": [
             [
-                "98a0d222fd20f7e1"
+                "5e8a700f50400d75"
             ]
         ]
     },
     {
-        "id": "98a0d222fd20f7e1",
+        "id": "5e8a700f50400d75",
         "type": "http request",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "GeoIP Lookup",
         "method": "GET",
         "ret": "obj",
@@ -141,14 +125,14 @@
         "y": 220,
         "wires": [
             [
-                "e42d504ccd325c04"
+                "bbb82cbb3314c643"
             ]
         ]
     },
     {
-        "id": "e42d504ccd325c04",
+        "id": "bbb82cbb3314c643",
         "type": "change",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Set Global Variables ",
         "rules": [
             {
@@ -189,14 +173,14 @@
         "y": 260,
         "wires": [
             [
-                "a725dd0e52223db1"
+                "44716b957706c145"
             ]
         ]
     },
     {
-        "id": "a725dd0e52223db1",
+        "id": "44716b957706c145",
         "type": "template",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Format iplocation file",
         "field": "payload",
         "fieldType": "msg",
@@ -208,14 +192,14 @@
         "y": 300,
         "wires": [
             [
-                "40399ae63f2a6dc5"
+                "e84e47707846cba7"
             ]
         ]
     },
     {
-        "id": "40399ae63f2a6dc5",
+        "id": "e84e47707846cba7",
         "type": "file",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "write iplocation file to disk ",
         "filename": "/data/iplocation",
         "appendNewline": true,
@@ -229,9 +213,9 @@
         ]
     },
     {
-        "id": "03cf8a85d6e46558",
+        "id": "80f2df45f08a6e8f",
         "type": "inject",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "",
         "props": [
             {
@@ -252,14 +236,14 @@
         "y": 80,
         "wires": [
             [
-                "acec7975370bbbc1"
+                "e7de9b49b8dfd16d"
             ]
         ]
     },
     {
-        "id": "1797f19d392917a9",
+        "id": "5cec23e70287158a",
         "type": "inject",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Every 1 minute",
         "props": [
             {
@@ -281,14 +265,14 @@
         "y": 460,
         "wires": [
             [
-                "a9c3759ed03df16c"
+                "72e1280169a3a63a"
             ]
         ]
     },
     {
-        "id": "54e2959b1106fa06",
+        "id": "c8476c4dd4d2fc30",
         "type": "comment",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Lookup Geo IP Information for the host ",
         "info": "",
         "x": 230,
@@ -296,9 +280,9 @@
         "wires": []
     },
     {
-        "id": "a9c3759ed03df16c",
+        "id": "72e1280169a3a63a",
         "type": "template",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Format GeoIP Lookup",
         "field": "url",
         "fieldType": "msg",
@@ -310,14 +294,14 @@
         "y": 460,
         "wires": [
             [
-                "b3521d85d87ac0e5"
+                "33d5f5b4f39dd73c"
             ]
         ]
     },
     {
-        "id": "b3521d85d87ac0e5",
+        "id": "33d5f5b4f39dd73c",
         "type": "http request",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "GeoIP Lookup",
         "method": "GET",
         "ret": "obj",
@@ -332,14 +316,14 @@
         "y": 460,
         "wires": [
             [
-                "4597af057156fb92"
+                "fa44cad7e3d92905"
             ]
         ]
     },
     {
-        "id": "4597af057156fb92",
+        "id": "fa44cad7e3d92905",
         "type": "change",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Set Global Variables ",
         "rules": [
             {
@@ -390,9 +374,9 @@
         ]
     },
     {
-        "id": "37871b4ffb54bb0a",
+        "id": "bb6f5efe8da982d1",
         "type": "conf ping",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "",
         "host": "",
         "timeout": "5",
@@ -401,14 +385,14 @@
         "y": 540,
         "wires": [
             [
-                "e44db5585b3b55bf"
+                "638fa6d2ab868a26"
             ]
         ]
     },
     {
-        "id": "22d5b03a526fde17",
+        "id": "b9c23873ca844579",
         "type": "change",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Set Global Variables ",
         "rules": [
             {
@@ -428,14 +412,14 @@
         "y": 540,
         "wires": [
             [
-                "37871b4ffb54bb0a"
+                "bb6f5efe8da982d1"
             ]
         ]
     },
     {
-        "id": "e0a3b8e0f95cb9b0",
+        "id": "8adc53a2bfb13d78",
         "type": "inject",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Every 1 minute",
         "props": [],
         "repeat": "60",
@@ -447,14 +431,14 @@
         "y": 540,
         "wires": [
             [
-                "22d5b03a526fde17"
+                "b9c23873ca844579"
             ]
         ]
     },
     {
-        "id": "b1dbb3b1e7d08ac6",
+        "id": "ce24eea91de324ba",
         "type": "change",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Set Global Variables ",
         "rules": [
             {
@@ -477,9 +461,9 @@
         ]
     },
     {
-        "id": "e44db5585b3b55bf",
+        "id": "638fa6d2ab868a26",
         "type": "function",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "format result",
         "func": "var rtt = msg.payload;\nmsg.payload = rtt / 2;\nreturn msg",
         "outputs": 1,
@@ -491,14 +475,14 @@
         "y": 580,
         "wires": [
             [
-                "b1dbb3b1e7d08ac6"
+                "ce24eea91de324ba"
             ]
         ]
     },
     {
-        "id": "21708ed7fd726906",
+        "id": "4a0a4a49c92002fc",
         "type": "comment",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "Lookup Geo IP Information for the Akamai Host",
         "info": "",
         "x": 260,
@@ -506,9 +490,9 @@
         "wires": []
     },
     {
-        "id": "c4aab8bc8cb91b9d",
+        "id": "540373bdb62d6f05",
         "type": "comment",
-        "z": "6a61f9e65168b7db",
+        "z": "91964d3a33343af2",
         "name": "RTT Test to Akamai Host",
         "info": "",
         "x": 190,
@@ -516,242 +500,9 @@
         "wires": []
     },
     {
-        "id": "cf90c23ce274d349",
-        "type": "inject",
-        "z": "256f0a90cb7e8855",
-        "name": "Inject every 10 seconds",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 100,
-        "wires": [
-            [
-                "930f5ea381574fb1"
-            ]
-        ]
-    },
-    {
-        "id": "de949f89eae62630",
-        "type": "function",
-        "z": "256f0a90cb7e8855",
-        "name": "Add current epoch timestamp ",
-        "func": "msg.payload.time = Date.now() \nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 190,
-        "y": 180,
-        "wires": [
-            [
-                "957fc7fc9bf9fb5b"
-            ]
-        ]
-    },
-    {
-        "id": "930f5ea381574fb1",
+        "id": "42b72336ff9abd7c",
         "type": "template",
-        "z": "256f0a90cb7e8855",
-        "name": "Extract Geo and Org info from global variables",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"extip\":\"{{global.ip}}\",\"publishregion\":\"{{global.regionName}}\",\"publishcountry\":\"{{global.countryCode}}\",\"publishorg\":\"{{global.org}}\",\"AkamaiRegion\":\"{{global.AkamaiRegion}}\",\"AkamaiIP\":\"{{global.AkamaiIP}}\",\"AkamaiLatency\":\"{{global.AkamaiLatency}}\"}",
-        "output": "json",
-        "x": 240,
-        "y": 140,
-        "wires": [
-            [
-                "de949f89eae62630"
-            ]
-        ]
-    },
-    {
-        "id": "a8b31caac26c1d43",
-        "type": "comment",
-        "z": "256f0a90cb7e8855",
-        "name": "Publisher Test",
-        "info": "",
-        "x": 310,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "957fc7fc9bf9fb5b",
-        "type": "mqtt out",
-        "z": "256f0a90cb7e8855",
-        "name": "publish to perftest topic",
-        "topic": "perftest",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "73b578ab563cd733",
-        "x": 490,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "f4f9d6bc5d7f3780",
-        "type": "function",
-        "z": "7e83177a19532f50",
-        "name": "Calculate Time Difference ",
-        "func": "var now = Date.now();\nvar then = msg.payload.time;\nmsg.payload.latency = now - then;\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 230,
-        "y": 160,
-        "wires": [
-            [
-                "96c4b0d539030f93"
-            ]
-        ]
-    },
-    {
-        "id": "96c4b0d539030f93",
-        "type": "change",
-        "z": "7e83177a19532f50",
-        "name": "Extract Geo Location from Global Variables",
-        "rules": [
-            {
-                "t": "set",
-                "p": "payload.regionName",
-                "pt": "msg",
-                "to": "regionName",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.countryCode",
-                "pt": "msg",
-                "to": "countryCode",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.org",
-                "pt": "msg",
-                "to": "org",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "topic",
-                "pt": "msg",
-                "to": "perf.results",
-                "tot": "str"
-            },
-            {
-                "t": "set",
-                "p": "host",
-                "pt": "msg",
-                "to": "payload.extip",
-                "tot": "msg"
-            },
-            {
-                "t": "set",
-                "p": "payload.AkamaiRegion",
-                "pt": "msg",
-                "to": "AkamaiRegion",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.AkamaiIP",
-                "pt": "msg",
-                "to": "AkamaiIP",
-                "tot": "global"
-            },
-            {
-                "t": "set",
-                "p": "payload.AkamaiLatency",
-                "pt": "msg",
-                "to": "AkamaiLatency",
-                "tot": "global"
-            }
-        ],
-        "action": "",
-        "property": "",
-        "from": "",
-        "to": "",
-        "reg": false,
-        "x": 250,
-        "y": 240,
-        "wires": [
-            [
-                "08900348a84c71ec"
-            ]
-        ]
-    },
-    {
-        "id": "361245a57d5c6863",
-        "type": "comment",
-        "z": "7e83177a19532f50",
-        "name": "Subscriber Test",
-        "info": "",
-        "x": 200,
-        "y": 60,
-        "wires": []
-    },
-    {
-        "id": "fdb7a990dbf25ddf",
-        "type": "mqtt in",
-        "z": "7e83177a19532f50",
-        "name": "",
-        "topic": "perftest",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "73b578ab563cd733",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 170,
-        "y": 100,
-        "wires": [
-            [
-                "f4f9d6bc5d7f3780"
-            ]
-        ]
-    },
-    {
-        "id": "08900348a84c71ec",
-        "type": "mqtt out",
-        "z": "7e83177a19532f50",
-        "name": "publish to perfresults topic",
-        "topic": "perfresults",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "73b578ab563cd733",
-        "x": 240,
-        "y": 300,
-        "wires": []
-    },
-    {
-        "id": "3e49864f27176a09",
-        "type": "template",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "1st hop measure (0 RTT, self IP)",
         "field": "payload",
         "fieldType": "msg",
@@ -763,14 +514,14 @@
         "y": 240,
         "wires": [
             [
-                "27be8405e436bf9e"
+                "142358470e3e696f"
             ]
         ]
     },
     {
-        "id": "1bc2cc594e271eb2",
+        "id": "46661bbc1fb0cbd8",
         "type": "template",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "2nd hop measure - Latency to Akamai IP ",
         "field": "payload",
         "fieldType": "msg",
@@ -782,14 +533,14 @@
         "y": 280,
         "wires": [
             [
-                "27be8405e436bf9e"
+                "142358470e3e696f"
             ]
         ]
     },
     {
-        "id": "27be8405e436bf9e",
+        "id": "142358470e3e696f",
         "type": "template",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "",
         "field": "topic",
         "fieldType": "msg",
@@ -801,14 +552,14 @@
         "y": 420,
         "wires": [
             [
-                "2447fc3d33ce0796"
+                "0fe80497cd179898"
             ]
         ]
     },
     {
-        "id": "8f956e65bdfb20b4",
+        "id": "a5322063d22a154f",
         "type": "template",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "3rd hop measure",
         "field": "payload",
         "fieldType": "msg",
@@ -820,14 +571,14 @@
         "y": 320,
         "wires": [
             [
-                "27be8405e436bf9e"
+                "142358470e3e696f"
             ]
         ]
     },
     {
-        "id": "ac7eb32bb241a264",
+        "id": "655c49416f0b27ae",
         "type": "function",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "function 2",
         "func": "var latency = msg.payload.latency;\nvar akalatency = msg.payload.AkamaiLatency;\nmsg.payload.thirdhop = latency - akalatency;\nreturn msg",
         "outputs": 1,
@@ -839,14 +590,14 @@
         "y": 320,
         "wires": [
             [
-                "8f956e65bdfb20b4"
+                "a5322063d22a154f"
             ]
         ]
     },
     {
-        "id": "46798b689406550f",
+        "id": "2b7a78d142914670",
         "type": "template",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "4th hop measure - total e2e publish-subscribe time",
         "field": "payload",
         "fieldType": "msg",
@@ -858,14 +609,14 @@
         "y": 360,
         "wires": [
             [
-                "27be8405e436bf9e"
+                "142358470e3e696f"
             ]
         ]
     },
     {
-        "id": "349333c45ab9151c",
+        "id": "de4231e4df0ea548",
         "type": "mqtt in",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "Subscribe to perfresults topic",
         "topic": "perfresults",
         "qos": "2",
@@ -879,17 +630,17 @@
         "y": 240,
         "wires": [
             [
-                "3e49864f27176a09",
-                "1bc2cc594e271eb2",
-                "ac7eb32bb241a264",
-                "46798b689406550f"
+                "42b72336ff9abd7c",
+                "46661bbc1fb0cbd8",
+                "655c49416f0b27ae",
+                "2b7a78d142914670"
             ]
         ]
     },
     {
-        "id": "2447fc3d33ce0796",
+        "id": "0fe80497cd179898",
         "type": "template",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "Format perfresult messages into PromQL operations",
         "field": "payload",
         "fieldType": "msg",
@@ -901,14 +652,14 @@
         "y": 460,
         "wires": [
             [
-                "9a71e8cec2970b34"
+                "7a25076fe068bf79"
             ]
         ]
     },
     {
-        "id": "9a71e8cec2970b34",
+        "id": "7a25076fe068bf79",
         "type": "prometheus-exporter",
-        "z": "bd8bd36947968507",
+        "z": "29f88445b04cd468",
         "name": "publish prometheus data to /metrics",
         "metric": "721141fde1080d32",
         "x": 530,
