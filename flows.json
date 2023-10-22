@@ -8,25 +8,9 @@
         "env": []
     },
     {
-        "id": "256f0a90cb7e8855",
-        "type": "tab",
-        "label": "Publisher Test",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "7e83177a19532f50",
+        "id": "04fab47b28dbf2d8",
         "type": "tab",
         "label": "Subscriber Test",
-        "disabled": false,
-        "info": "",
-        "env": []
-    },
-    {
-        "id": "bd8bd36947968507",
-        "type": "tab",
-        "label": "metrics processor",
         "disabled": false,
         "info": "",
         "env": []
@@ -516,101 +500,9 @@
         "wires": []
     },
     {
-        "id": "cf90c23ce274d349",
-        "type": "inject",
-        "z": "256f0a90cb7e8855",
-        "name": "Inject every 10 seconds",
-        "props": [
-            {
-                "p": "payload"
-            },
-            {
-                "p": "topic",
-                "vt": "str"
-            }
-        ],
-        "repeat": "1",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "x": 170,
-        "y": 100,
-        "wires": [
-            [
-                "930f5ea381574fb1"
-            ]
-        ]
-    },
-    {
-        "id": "de949f89eae62630",
+        "id": "f4681fc802b2d563",
         "type": "function",
-        "z": "256f0a90cb7e8855",
-        "name": "Add current epoch timestamp ",
-        "func": "msg.payload.time = Date.now() \nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 190,
-        "y": 180,
-        "wires": [
-            [
-                "957fc7fc9bf9fb5b"
-            ]
-        ]
-    },
-    {
-        "id": "930f5ea381574fb1",
-        "type": "template",
-        "z": "256f0a90cb7e8855",
-        "name": "Extract Geo and Org info from global variables",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"extip\":\"{{global.ip}}\",\"publishregion\":\"{{global.regionName}}\",\"publishcountry\":\"{{global.countryCode}}\",\"publishorg\":\"{{global.org}}\",\"AkamaiRegion\":\"{{global.AkamaiRegion}}\",\"AkamaiIP\":\"{{global.AkamaiIP}}\",\"AkamaiLatency\":\"{{global.AkamaiLatency}}\"}",
-        "output": "json",
-        "x": 240,
-        "y": 140,
-        "wires": [
-            [
-                "de949f89eae62630"
-            ]
-        ]
-    },
-    {
-        "id": "a8b31caac26c1d43",
-        "type": "comment",
-        "z": "256f0a90cb7e8855",
-        "name": "Publisher Test",
-        "info": "",
-        "x": 310,
-        "y": 40,
-        "wires": []
-    },
-    {
-        "id": "957fc7fc9bf9fb5b",
-        "type": "mqtt out",
-        "z": "256f0a90cb7e8855",
-        "name": "publish to perftest topic",
-        "topic": "perftest",
-        "qos": "",
-        "retain": "",
-        "respTopic": "",
-        "contentType": "",
-        "userProps": "",
-        "correl": "",
-        "expiry": "",
-        "broker": "73b578ab563cd733",
-        "x": 490,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "f4f9d6bc5d7f3780",
-        "type": "function",
-        "z": "7e83177a19532f50",
+        "z": "04fab47b28dbf2d8",
         "name": "Calculate Time Difference ",
         "func": "var now = Date.now();\nvar then = msg.payload.time;\nmsg.payload.latency = now - then;\nreturn msg",
         "outputs": 1,
@@ -619,14 +511,14 @@
         "y": 160,
         "wires": [
             [
-                "96c4b0d539030f93"
+                "b97005a81e63841d"
             ]
         ]
     },
     {
-        "id": "96c4b0d539030f93",
+        "id": "b97005a81e63841d",
         "type": "change",
-        "z": "7e83177a19532f50",
+        "z": "04fab47b28dbf2d8",
         "name": "Extract Geo Location from Global Variables",
         "rules": [
             {
@@ -695,14 +587,14 @@
         "y": 240,
         "wires": [
             [
-                "08900348a84c71ec"
+                "72ee6e664c981534"
             ]
         ]
     },
     {
-        "id": "361245a57d5c6863",
+        "id": "9a9b657fd67cec5c",
         "type": "comment",
-        "z": "7e83177a19532f50",
+        "z": "04fab47b28dbf2d8",
         "name": "Subscriber Test",
         "info": "",
         "x": 200,
@@ -710,9 +602,9 @@
         "wires": []
     },
     {
-        "id": "fdb7a990dbf25ddf",
+        "id": "2fe8e8b7ba7ba770",
         "type": "mqtt in",
-        "z": "7e83177a19532f50",
+        "z": "04fab47b28dbf2d8",
         "name": "",
         "topic": "perftest",
         "qos": "2",
@@ -726,14 +618,14 @@
         "y": 100,
         "wires": [
             [
-                "f4f9d6bc5d7f3780"
+                "f4681fc802b2d563"
             ]
         ]
     },
     {
-        "id": "08900348a84c71ec",
+        "id": "72ee6e664c981534",
         "type": "mqtt out",
-        "z": "7e83177a19532f50",
+        "z": "04fab47b28dbf2d8",
         "name": "publish to perfresults topic",
         "topic": "perfresults",
         "qos": "",
@@ -746,173 +638,6 @@
         "broker": "73b578ab563cd733",
         "x": 240,
         "y": 300,
-        "wires": []
-    },
-    {
-        "id": "3e49864f27176a09",
-        "type": "template",
-        "z": "bd8bd36947968507",
-        "name": "1st hop measure (0 RTT, self IP)",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{payload.extip}}\",\"rtt\":0,\"hop\":1,\"loss\":0}",
-        "output": "json",
-        "x": 510,
-        "y": 240,
-        "wires": [
-            [
-                "27be8405e436bf9e"
-            ]
-        ]
-    },
-    {
-        "id": "1bc2cc594e271eb2",
-        "type": "template",
-        "z": "bd8bd36947968507",
-        "name": "2nd hop measure - Latency to Akamai IP ",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{payload.AkamaiIP}}\",\"rtt\":{{payload.AkamaiLatency}},\"hop\":2,\"loss\":0}",
-        "output": "json",
-        "x": 540,
-        "y": 280,
-        "wires": [
-            [
-                "27be8405e436bf9e"
-            ]
-        ]
-    },
-    {
-        "id": "27be8405e436bf9e",
-        "type": "template",
-        "z": "bd8bd36947968507",
-        "name": "",
-        "field": "topic",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "perf-results.{{global.ip}}",
-        "output": "str",
-        "x": 440,
-        "y": 420,
-        "wires": [
-            [
-                "2447fc3d33ce0796"
-            ]
-        ]
-    },
-    {
-        "id": "8f956e65bdfb20b4",
-        "type": "template",
-        "z": "bd8bd36947968507",
-        "name": "3rd hop measure",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{global.AkamaiIP}}\",\"rtt\":{{payload.thirdhop}},\"hop\":3,\"loss\":0}",
-        "output": "json",
-        "x": 470,
-        "y": 320,
-        "wires": [
-            [
-                "27be8405e436bf9e"
-            ]
-        ]
-    },
-    {
-        "id": "ac7eb32bb241a264",
-        "type": "function",
-        "z": "bd8bd36947968507",
-        "name": "function 2",
-        "func": "var latency = msg.payload.latency;\nvar akalatency = msg.payload.AkamaiLatency;\nmsg.payload.thirdhop = latency - akalatency;\nreturn msg",
-        "outputs": 1,
-        "noerr": 0,
-        "initialize": "",
-        "finalize": "",
-        "libs": [],
-        "x": 300,
-        "y": 320,
-        "wires": [
-            [
-                "8f956e65bdfb20b4"
-            ]
-        ]
-    },
-    {
-        "id": "46798b689406550f",
-        "type": "template",
-        "z": "bd8bd36947968507",
-        "name": "4th hop measure - total e2e publish-subscribe time",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"host\":\"{{payload.publishregion}}\",\"dest\":\"{{payload.regionName}}\",\"ip\":\"{{global.ip}}\",\"rtt\":{{payload.latency}},\"hop\":4,\"loss\":0}",
-        "output": "json",
-        "x": 570,
-        "y": 360,
-        "wires": [
-            [
-                "27be8405e436bf9e"
-            ]
-        ]
-    },
-    {
-        "id": "349333c45ab9151c",
-        "type": "mqtt in",
-        "z": "bd8bd36947968507",
-        "name": "Subscribe to perfresults topic",
-        "topic": "perfresults",
-        "qos": "2",
-        "datatype": "auto-detect",
-        "broker": "73b578ab563cd733",
-        "nl": false,
-        "rap": true,
-        "rh": 0,
-        "inputs": 0,
-        "x": 160,
-        "y": 240,
-        "wires": [
-            [
-                "3e49864f27176a09",
-                "1bc2cc594e271eb2",
-                "ac7eb32bb241a264",
-                "46798b689406550f"
-            ]
-        ]
-    },
-    {
-        "id": "2447fc3d33ce0796",
-        "type": "template",
-        "z": "bd8bd36947968507",
-        "name": "Format perfresult messages into PromQL operations",
-        "field": "payload",
-        "fieldType": "msg",
-        "format": "handlebars",
-        "syntax": "mustache",
-        "template": "{\"op\":\"set\",\"val\":{{payload.rtt}},\"labels\":{\"ip\":\"{{payload.ip}}\",\"host\":\"{{payload.host}}\",\"dest\":\"{{payload.dest}}\",\"hop\":{{payload.hop}},\"loss\":{{payload.loss}}}}",
-        "output": "json",
-        "x": 580,
-        "y": 460,
-        "wires": [
-            [
-                "9a71e8cec2970b34"
-            ]
-        ]
-    },
-    {
-        "id": "9a71e8cec2970b34",
-        "type": "prometheus-exporter",
-        "z": "bd8bd36947968507",
-        "name": "publish prometheus data to /metrics",
-        "metric": "721141fde1080d32",
-        "x": 530,
-        "y": 500,
         "wires": []
     }
 ]
