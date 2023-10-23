@@ -1,6 +1,4 @@
-{
-    "b3521d85d87ac0e5": {},
-    "73b578ab563cd733": {
+{"73b578ab563cd733": {
         "user": "$(CLIENTID)",
         "password": "$(JWT)"
     }
