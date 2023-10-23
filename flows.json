@@ -2800,6 +2800,60 @@
         "wires": []
     },
     {
+        "id": "17db0f5cb7a01e64",
+        "type": "inject",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "props": [],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 270,
+        "y": 340,
+        "wires": [
+            [
+                "3636b50f6ebe3e49"
+            ]
+        ]
+    },
+    {
+        "id": "3636b50f6ebe3e49",
+        "type": "template",
+        "z": "256f0a90cb7e8855",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "{{env.CLIENTID}}",
+        "output": "str",
+        "x": 460,
+        "y": 340,
+        "wires": [
+            [
+                "65a16f66699793ef"
+            ]
+        ]
+    },
+    {
+        "id": "65a16f66699793ef",
+        "type": "debug",
+        "z": "256f0a90cb7e8855",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 660,
+        "y": 320,
+        "wires": []
+    },
+    {
         "id": "f4f9d6bc5d7f3780",
         "type": "function",
         "z": "7e83177a19532f50",
