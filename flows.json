@@ -1912,7 +1912,7 @@
         "type": "mqtt in",
         "z": "e96ccaa.4498f38",
         "name": "",
-        "topic": "dronetelemetry",
+        "topic": "test/dronetelemetry",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "73b578ab563cd733",
@@ -1920,7 +1920,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 180,
+        "x": 190,
         "y": 300,
         "wires": [
             [
@@ -1985,7 +1985,7 @@
         "type": "mqtt in",
         "z": "2e9aae2b.1af31a",
         "name": "",
-        "topic": "dronecmdresponse",
+        "topic": "test/dronecmdresponse",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "73b578ab563cd733",
@@ -1993,7 +1993,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 150,
+        "x": 160,
         "y": 220,
         "wires": [
             [
@@ -2786,7 +2786,7 @@
         "type": "mqtt out",
         "z": "256f0a90cb7e8855",
         "name": "publish to perftest topic",
-        "topic": "perftest",
+        "topic": "test/publisher",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -2961,7 +2961,7 @@
         "type": "mqtt in",
         "z": "7e83177a19532f50",
         "name": "",
-        "topic": "perftest",
+        "topic": "test/publisher",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "73b578ab563cd733",
@@ -2969,7 +2969,7 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 170,
+        "x": 190,
         "y": 100,
         "wires": [
             [
@@ -2982,7 +2982,7 @@
         "type": "mqtt out",
         "z": "7e83177a19532f50",
         "name": "publish to perfresults topic",
-        "topic": "perfresults",
+        "topic": "test/perfresults",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -3000,7 +3000,7 @@
         "type": "debug",
         "z": "7e83177a19532f50",
         "name": "debug 1",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -3130,7 +3130,7 @@
         "type": "mqtt in",
         "z": "bd8bd36947968507",
         "name": "Subscribe to perfresults topic",
-        "topic": "perfresults",
+        "topic": "test/perfresults",
         "qos": "2",
         "datatype": "auto-detect",
         "broker": "73b578ab563cd733",
@@ -3145,7 +3145,8 @@
                 "3e49864f27176a09",
                 "1bc2cc594e271eb2",
                 "ac7eb32bb241a264",
-                "46798b689406550f"
+                "46798b689406550f",
+                "dd9d64c6d7cafc79"
             ]
         ]
     },
@@ -3176,6 +3177,22 @@
         "metric": "721141fde1080d32",
         "x": 530,
         "y": 500,
+        "wires": []
+    },
+    {
+        "id": "dd9d64c6d7cafc79",
+        "type": "debug",
+        "z": "bd8bd36947968507",
+        "name": "debug 3",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 120,
         "wires": []
     },
     {
@@ -6155,7 +6172,7 @@
         "type": "mqtt out",
         "z": "4bb1402f79425498",
         "name": "",
-        "topic": "dronecontrol",
+        "topic": "test/dronecontrol",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -6164,7 +6181,7 @@
         "correl": "",
         "expiry": "",
         "broker": "73b578ab563cd733",
-        "x": 1210,
+        "x": 1230,
         "y": 160,
         "wires": []
     },
@@ -6187,14 +6204,14 @@
         "type": "mqtt in",
         "z": "e7e45782.ed0558",
         "name": "",
-        "topic": "dronecontrol",
+        "topic": "/test/dronecontrol",
         "qos": "0",
         "datatype": "auto",
         "broker": "73b578ab563cd733",
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 110,
+        "x": 130,
         "y": 140,
         "wires": [
             [
@@ -6283,7 +6300,7 @@
         "type": "mqtt out",
         "z": "e7e45782.ed0558",
         "name": "",
-        "topic": "dronetelemetry",
+        "topic": "test/dronetelemetry",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -6292,7 +6309,7 @@
         "correl": "",
         "expiry": "",
         "broker": "73b578ab563cd733",
-        "x": 520,
+        "x": 530,
         "y": 260,
         "wires": []
     },
@@ -6321,7 +6338,7 @@
         "type": "mqtt out",
         "z": "e7e45782.ed0558",
         "name": "",
-        "topic": "dronecmdresponse",
+        "topic": "test/dronecmdresponse",
         "qos": "",
         "retain": "",
         "respTopic": "",
@@ -6330,7 +6347,7 @@
         "correl": "",
         "expiry": "",
         "broker": "73b578ab563cd733",
-        "x": 510,
+        "x": 530,
         "y": 320,
         "wires": []
     }
