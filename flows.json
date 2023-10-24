@@ -947,6 +947,33 @@
         "sessionExpiry": ""
     },
     {
+        "id": "8d0c3e15630afc98",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
         "id": "ed4293be.bcf4",
         "type": "change",
         "z": "8566b8bf.d49a",
@@ -2048,13 +2075,30 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 160,
+        "x": 120,
         "y": 220,
         "wires": [
             [
-                "f713fbbe.7f5c2"
+                "f713fbbe.7f5c2",
+                "5c92eae84b2b0c44"
             ]
         ]
+    },
+    {
+        "id": "5c92eae84b2b0c44",
+        "type": "debug",
+        "z": "2e9aae2b.1af31a",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 180,
+        "wires": []
     },
     {
         "id": "faaf807b.d69498",
@@ -5340,7 +5384,8 @@
         "wires": [
             [
                 "49e0c9fc.ee8f3",
-                "ca938576684e67c7"
+                "ca938576684e67c7",
+                "3e435d59344577ad"
             ]
         ]
     },
@@ -6255,7 +6300,7 @@
         "z": "4bb1402f79425498",
         "name": "",
         "topic": "test/dronecontrol",
-        "qos": "",
+        "qos": "0",
         "retain": "",
         "respTopic": "",
         "contentType": "",
@@ -6263,7 +6308,7 @@
         "correl": "",
         "expiry": "",
         "broker": "7238563767ed7313",
-        "x": 1230,
+        "x": 1210,
         "y": 160,
         "wires": []
     },
@@ -6272,7 +6317,7 @@
         "type": "debug",
         "z": "4bb1402f79425498",
         "name": "Commands sent",
-        "active": true,
+        "active": false,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -6282,22 +6327,37 @@
         "wires": []
     },
     {
+        "id": "3e435d59344577ad",
+        "type": "debug",
+        "z": "4bb1402f79425498",
+        "name": "Commands sent",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "x": 1120,
+        "y": 100,
+        "wires": []
+    },
+    {
         "id": "576a05ba.92a87c",
         "type": "mqtt in",
         "z": "e7e45782.ed0558",
         "name": "",
-        "topic": "/test/dronecontrol",
+        "topic": "test/dronecontrol",
         "qos": "0",
-        "datatype": "auto",
+        "datatype": "utf8",
         "broker": "7238563767ed7313",
         "nl": false,
         "rap": false,
         "inputs": 0,
-        "x": 130,
+        "x": 120,
         "y": 140,
         "wires": [
             [
-                "7a2ba3e2.69684c"
+                "7a2ba3e2.69684c",
+                "3ca38c221f45bdaf"
             ]
         ]
     },
@@ -6305,6 +6365,7 @@
         "id": "7a2ba3e2.69684c",
         "type": "udp out",
         "z": "e7e45782.ed0558",
+        "d": true,
         "name": "",
         "addr": "192.168.10.1",
         "iface": "",
@@ -6381,6 +6442,7 @@
         "id": "601ef8d8.4869c8",
         "type": "mqtt out",
         "z": "e7e45782.ed0558",
+        "d": true,
         "name": "",
         "topic": "test/dronetelemetry",
         "qos": "",
@@ -6419,6 +6481,7 @@
         "id": "edfbc411462cef87",
         "type": "mqtt out",
         "z": "e7e45782.ed0558",
+        "d": true,
         "name": "",
         "topic": "test/dronecmdresponse",
         "qos": "",
@@ -6431,6 +6494,22 @@
         "broker": "7238563767ed7313",
         "x": 530,
         "y": 320,
+        "wires": []
+    },
+    {
+        "id": "3ca38c221f45bdaf",
+        "type": "debug",
+        "z": "e7e45782.ed0558",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 500,
+        "y": 180,
         "wires": []
     }
 ]
